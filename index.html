@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8" />
-  <title>Гүн галуутай сургууль – 2025 demo дүнгийн систем</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>2025 оны дүнгийн систем</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
       --primary: #2563eb;
@@ -15,7 +15,6 @@
       --muted: #6b7280;
     }
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -76,9 +75,7 @@
       gap: 20px;
     }
     @media (max-width: 800px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
+      .layout { grid-template-columns: 1fr; }
     }
     .card {
       background: var(--card-bg);
@@ -87,46 +84,14 @@
       border: 1px solid var(--border);
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
     }
-    h1, h2, h3 {
-      margin: 0;
-    }
     h2 {
-      margin-bottom: 8px;
+      margin: 0 0 8px;
       font-size: 18px;
     }
     .muted {
       font-size: 12px;
       color: var(--muted);
     }
-
-    /* Filters / search */
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 10px 0 14px;
-      align-items: flex-end;
-    }
-    label {
-      font-size: 12px;
-      color: var(--muted);
-    }
-    select, input[type="text"] {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 13px;
-      background: #f9fafb;
-      outline: none;
-    }
-    select:focus, input[type="text"]:focus {
-      border-color: var(--primary);
-    }
-    .search-input {
-      min-width: 160px;
-    }
-
-    /* Students grid */
     .students-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -142,11 +107,7 @@
       text-align: center;
       cursor: pointer;
       border: 1px solid transparent;
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease,
-        border-color 0.15s ease,
-        background 0.15s ease;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s, background 0.15s;
     }
     .student-card:hover {
       transform: translateY(-2px);
@@ -181,8 +142,6 @@
       font-size: 11px;
       color: var(--muted);
     }
-
-    /* Details */
     .details-header {
       display: flex;
       align-items: center;
@@ -252,9 +211,7 @@
       background: #f3f4f6;
       font-weight: 600;
     }
-    tr:last-child td {
-      border-bottom: none;
-    }
+    tr:last-child td { border-bottom: none; }
     .empty-message {
       font-size: 12px;
       color: var(--muted);
@@ -265,66 +222,124 @@
       color: var(--muted);
       padding: 10px 0 4px;
     }
-
-    /* Buttons, admin banner */
-    .btn {
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
-      border: 1px solid var(--border);
-      background: #f9fafb;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--primary);
-      border-color: var(--primary-dark);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-    .btn-small {
-      font-size: 11px;
-      padding: 4px 10px;
-    }
-    .admin-banner {
-      display: none;
-      background: #fef3c7;
-      color: #92400e;
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 11px;
-      margin-bottom: 6px;
-    }
-    .footer-row {
+    /* Гарах товч */
+    .logout-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 6px;
+      margin-bottom: 6px;
       gap: 8px;
-      margin-top: 8px;
+    }
+    .logout-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .logout-btn:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+    /* Админ товч (header дээр) */
+    .admin-header-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 11px;
       color: var(--muted);
     }
-    .grade-input {
-      width: 100%;
-      padding: 3px 4px;
-      border-radius: 6px;
-      border: 1px solid #d1d5db;
+    .admin-btn {
+      padding: 5px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .admin-btn:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+    /* Админ баннер (баруун карт дотор) */
+    .admin-banner {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: #fef3c7;
+      border: 1px solid #facc15;
+      font-size: 11px;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+    /* Жил сонгох select */
+    .year-select-row {
+      margin-bottom: 8px;
+    }
+    .year-select-row label {
       font-size: 12px;
-      box-sizing: border-box;
+      color: var(--muted);
+      margin-right: 6px;
+    }
+    .year-select-row select {
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+    }
+    /* Админ засварын товч */
+    .save-row {
+      margin-top: 8px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      align-items: center;
+    }
+    .save-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--primary-dark);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+    }
+    .save-btn:hover {
+      background: var(--primary-dark);
+    }
+    .info-small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    input.grade-input {
+      width: 60px;
+      padding: 2px 4px;
+      font-size: 11px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      text-align: right;
+    }
+    input.grade-input:focus {
+      border-color: var(--primary);
+      outline: none;
     }
 
+    /* PRINT хэвлэх үед */
     @media print {
-      header, #leftSide, #adminControls, #totalStudentsLabel, #searchRow {
+      header,
+      .layout > section:first-child,
+      #btnPrint {
         display: none !important;
       }
       body {
-        background: #fff;
+        background: #ffffff;
       }
       .card {
         box-shadow: none;
         border: none;
-        padding: 0;
       }
     }
   </style>
@@ -335,15 +350,13 @@
     <div class="logo">
       <div class="logo-badge">IT</div>
       <div>
-        <div class="logo-text-title">Гүн галуутай сургууль • 2025 Demo</div>
-        <div class="logo-text-sub">6Е–12Е ангийн дүнгийн систем (эцэг эхийн вэб)</div>
+        <div class="logo-text-title">2025 оны дүнгийн систем</div>
+        <div class="logo-text-sub">Гүн галуутай сургууль • 6Е–12Е анги</div>
       </div>
     </div>
-    <div style="text-align:right;font-size:11px;color:#6b7280;">
-      Demo – бодит регистр, дүнгээ бүү оруул
-      <div id="adminControls">
-        <button id="adminBtn" class="btn btn-small">Админ нэвтрэх</button>
-      </div>
+    <div class="admin-header-box">
+      <span>Гүн галуутай Е бүлгийн дүнгийн веб</span>
+      <button id="adminBtn" class="admin-btn">Админ нэвтрэх</button>
     </div>
   </div>
 </header>
@@ -351,55 +364,67 @@
 <main>
   <div class="container layout">
     <!-- Зүүн тал -->
-    <section class="card" id="leftSide">
+    <section class="card">
       <h2>Сурагч сонгох</h2>
-      <p class="muted">6Е–12Е ангийн сурагчид. Сурагчийн зураг дээр дарж PIN оруулан дүнгээ үзнэ.</p>
+      <p class="muted">6–12-р ангийн Е бүлгийн сурагчдын жагсаалт.</p>
 
-      <div class="filters" id="searchRow">
-        <div>
-          <label for="gradeSelectFilter">Анги</label><br/>
-          <select id="gradeSelectFilter">
-            <option value="all">Бүгд</option>
-            <option value="6" selected>6-р анги</option>
-            <option value="7">7-р анги</option>
-            <option value="8">8-р анги</option>
-            <option value="9">9-р анги</option>
-            <option value="10">10-р анги</option>
-            <option value="11">11-р анги</option>
-            <option value="12">12-р анги</option>
-          </select>
-        </div>
-        <div>
-          <label>Бүлэг</label><br/>
-          <input value="Е бүлэг" disabled style="padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-size:13px;background:#e5e7eb;color:#4b5563;min-width:80px;" />
-        </div>
-        <div style="flex:1;">
-          <label for="searchInput">Нэрээр хайх</label><br/>
-          <input id="searchInput" class="search-input" type="text" placeholder="Жишээ: Тэмүүлэн" />
-        </div>
+      <div class="muted" id="totalStudentsLabel" style="margin-bottom:6px;">
+        Нийт сурагч: 0
       </div>
 
-      <div id="totalStudentsLabel" class="muted" style="margin-bottom:4px;">Нийт сурагч: 0</div>
+      <!-- Нэрээр хайх input -->
+      <div style="margin-bottom:8px;">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Хүүхдийн нэрээр хайх…"
+          style="
+            width:100%;
+            padding:7px 12px;
+            border-radius:999px;
+            border:1px solid #d1d5db;
+            font-size:13px;
+            outline:none;
+          "
+        />
+      </div>
+
+      <div class="muted" style="margin-bottom:6px;">
+        Хүүхдийн зураг дээр дарж, регистрийн дугаараар нэвтэрч дүнг үзнэ.
+      </div>
       <div id="studentsGrid" class="students-grid"></div>
     </section>
 
     <!-- Баруун тал -->
     <section class="card">
-      <div id="adminBanner" class="admin-banner">
-        Админ горим идэвхтэй. Дүнг засварлаж Firestore-д хадгалахад болгоомжтой ажиллана уу.
-      </div>
+      <h2>Хүүхдийн дүн, ирц</h2>
+      <p class="muted">Регистрээр нэвтэрсний дараа тухайн жилийн ангиа сонгон дүнгээ харна.</p>
 
-      <div class="footer-row" style="margin-bottom:4px;">
-        <h2>Сурагчийн дүн, ирц</h2>
-        <div>
-          <button id="btnPrint" class="btn btn-small" style="display:none;">Хэвлэх / PDF</button>
-          <button id="logoutBtn" class="btn btn-small">Гарах</button>
-        </div>
+      <!-- Дүн хэвлэх товч -->
+      <button
+        id="btnPrint"
+        style="
+          display:none;
+          margin-bottom:10px;
+          padding:7px 14px;
+          border-radius:999px;
+          background:#2563eb;
+          color:white;
+          font-size:13px;
+          border:none;
+          cursor:pointer;
+        "
+      >
+        📄 Дүн хэвлэх / PDF болгох
+      </button>
+
+      <!-- Админ горимын баннер -->
+      <div id="adminBanner" class="admin-banner" style="display:none;">
+        Админ горим идэвхтэй байна. Доорх хүснэгтүүд дээр шууд дүн, шалгалтын оноог засварлаж “Хадгалах” товч дарж хадгална.
       </div>
-      <p class="muted">Сурагчийн зураг дээр дарж, өөрийн PIN кодоо оруулан дүн, ирцийн мэдээллээ харах боломжтой.</p>
 
       <div id="detailsPlaceholder" class="details-placeholder">
-        Сурагч сонгогдоогүй байна. Зүүн талаас сурагчийн зураг дээр дарна уу.
+        Хүүхэд сонгогдоогүй байна. Зүүн талаас сурагчийн зураг дээр дарна уу.
       </div>
 
       <div id="studentDetails" style="display:none;">
@@ -407,13 +432,14 @@
           <div class="details-photo" id="detailsPhoto"></div>
           <div>
             <div class="details-name" id="detailsName"></div>
-            <div class="details-meta">
-              <span id="detailsMeta"></span>
-              •
-              <select id="yearSelect" style="border-radius:999px;border:1px solid var(--border);font-size:11px;padding:3px 8px;background:#f9fafb;">
-              </select>
-            </div>
+            <div class="details-meta" id="detailsMeta"></div>
           </div>
+        </div>
+
+        <!-- Жил сонгох -->
+        <div class="year-select-row">
+          <label for="yearSelect">Жил / анги:</label>
+          <select id="yearSelect"></select>
         </div>
 
         <div class="stat-row">
@@ -427,78 +453,173 @@
           </div>
           <div class="stat-box">
             <strong id="statExams">0</strong>
-            Улсын шалгалтын тоо
+            Шалгалтын тоо
           </div>
+        </div>
+
+        <!-- Гарах + хадгалах -->
+        <div class="logout-row">
+          <div class="muted">
+            Эцэг эх / сурагч зөвхөн уншина. Дүнгийн засварлалтыг зөвхөн админ горимоор хийнэ.
+          </div>
+          <button id="logoutBtn" class="logout-btn">Гарах</button>
+        </div>
+
+        <div class="save-row" id="saveRow" style="display:none;">
+          <span class="info-small">Админ горимд: хүснэгт дээрх утгуудыг засварлаад “Хадгалах” товч дарна.</span>
+          <button id="saveBtn" class="save-btn">Өөрчлөлтийг хадгалах</button>
         </div>
 
         <div class="tab-title">18 хичээлийн дүн (1-р улирал, 2-р улирал, жилийн эцэс)</div>
         <div id="gradesTableWrapper"></div>
 
-        <div class="tab-title">Улсын шалгалтын оноо (Монгол хэл, Математик, Нэгдмэл агуулга)</div>
+        <div class="tab-title">Шалгалтын оноо</div>
         <div id="examsTableWrapper"></div>
-
-        <div id="saveRow" class="footer-row" style="display:none;margin-top:10px;">
-          <span>Админ: өөрчлөлтийг Firestore-д хадгалах</span>
-          <button id="saveBtn" class="btn btn-primary btn-small">Хадгалах</button>
-        </div>
       </div>
     </section>
   </div>
 </main>
 
-<!-- ========== GRADE SYSTEM MAIN SCRIPT (frontend logic) ========== -->
 <script>
-  // 18 хичээл
+  // -------- Тогтмолууд --------
   const SUBJECTS_18 = [
-    "Монгол хэл", "Математик", "Англи хэл", "Биологи", "Физик", "Хими",
-    "Газар зүй", "Түүх", "Иргэний боловсрол", "Мэдээллийн технологи",
-    "Дизайн технологи", "Биеийн тамир", "Дүрслэх урлаг", "Хөгжим",
-    "Сонгон судлах", "Үндэсний бичиг", "Уран зохиол", "Байгалийн ухаан"
+    "Монгол хэл",
+    "Математик",
+    "Англи хэл",
+    "Биологи",
+    "Физик",
+    "Хими",
+    "Газар зүй",
+    "Түүх",
+    "Иргэний боловсрол",
+    "Мэдээллийн технологи",
+    "Дизайн технологи",
+    "Биеийн тамир",
+    "Дүрслэх урлаг",
+    "Хөгжим",
+    "Сонгон судлах",
+    "Үндэсний бичиг",
+    "Уран зохиол",
+    "Байгалийн ухаан"
   ];
 
-  const EXAM_SUBJECTS = ["Монгол хэл", "Математик", "Нэгдмэл агуулга"];
+  const EXAM_SUBJECTS = [
+    "Монгол хэл",
+    "Математик",
+    "Нэгдмэл агуулга"
+  ];
 
-  const ADMIN_PASSWORD = "it1234"; // хүсвэл өөрчилж болно
+  const ADMIN_PASSWORD = "it1234"; // хүсвэл өөрөө солиорой
+  const STORAGE_KEY = "gg_2025_eclass_v2";
 
-  // Жишээ өгөгдөл – Firestore байхгүй үед fallback
-  const defaultStudents = [
-    {
-      id: "s01",
-      name: "Тэмүүлэн",
-      regNo: "E0001", // PIN код, РД биш
-      photo: "https://via.placeholder.com/150x150?text=E01",
-      gender: "эр",
-      years: {
-        "6": {
-          gradeLabel: "6Е анги",
-          attendance: { present: 110, absent: 5, late: 2 },
-          grades: SUBJECTS_18.map((subj, i) => ({
-            subject: subj,
-            term1: 80 + (i % 5) * 2,
-            term2: 81 + (i % 5) * 2,
-            final: 82 + (i % 5) * 2
-          })),
-          exams: [
-            { name: "Монгол хэл", score: 780 },
-            { name: "Математик", score: 800 },
-            { name: "Нэгдмэл агуулга", score: 795 }
-          ]
-        }
-      }
+  // -------- Хүүхдийн нэрсийн жагсаалт --------
+  const DEFAULT_STUDENT_NAMES = [
+    "Азбилэг",
+    "Алтанзул",
+    "Амин-Эрдэнэ",
+    "Ану",
+    "Анхбаяр",
+    "Баярхүү",
+    "Ганимаа",
+    "Гантогтох",
+    "Гантөгс",
+    "Ганшагай",
+    "Ган-Энэрэл",
+    "Гуа-марал",
+    "Гэгээнээ",
+    "Дөлгөөн",
+    "Ерөөлт",
+    "Есүүхишиг",
+    "Лувсанчүлтэм",
+    "Маралаа",
+    "Мөнгөн-Эрдэнэ",
+    "Мөнхгэрэл",
+    "Мөнхзул",
+    "Номин",
+    "Оюун",
+    "Оюундарь",
+    "Өнөмөнхлэй",
+    "Өнөнинж",
+    "Санжаадамба",
+    "Саруул-Эрдэнэ",
+    "Соёмбо",
+    "Тодбаяр",
+    "Түшиг",
+    "Тэмүүлэн",
+    "Урангоо",
+    "Үржиханд",
+    "Хулан",
+    "Чингүүн",
+    "Энххүслэн",
+    "Эрхэмбаяр",
+    "Эрхэмбаяр",
+    "Тамир"
+  ];
+
+  // 6–12-р ангийн хоосон жил үүсгэгч
+  function makeEmptyYears() {
+    const years = {};
+    for (let grade = 6; grade <= 12; grade++) {
+      years[String(grade)] = {
+        gradeLabel: grade + "Е анги",
+        attendance: { present: 0, absent: 0, late: 0 },
+        grades: SUBJECTS_18.map((subj) => ({
+          subject: subj,
+          term1: "",
+          term2: "",
+          final: ""
+        })),
+        exams: EXAM_SUBJECTS.map((subj) => ({
+          name: subj,
+          score: ""
+        }))
+      };
     }
-  ];
+    return years;
+  }
 
-  // Глобал хувьсагчид
-  let students = [];      // Firestore-оос ачаалсан бүх сурагч
-  let isAdmin = false;
-  let currentStudent = null;
-  let currentYearKey = null;
+  // 40 сурагчийг автоматаар үүсгэнэ
+  const defaultStudents = DEFAULT_STUDENT_NAMES.map((name, index) => ({
+    id: "s" + String(index + 1).padStart(2, "0"),
+    name: name,
+    // Дараа нь жинхэнэ регистрээр сольж болно
+    regNo: "XX" + String(10000000 + index),
+    photo:
+      "https://via.placeholder.com/150x150?text=E+" +
+      String(index + 1).padStart(2, "0"),
+    // Жишээ болгож ээлжлээд эр/эм
+    gender: index % 2 === 0 ? "эр" : "эм",
+    years: makeEmptyYears()
+  }));
 
-  // DOM
-  const gradeFilter = document.getElementById("gradeSelectFilter");
-  const searchInput = document.getElementById("searchInput");
+  // -------- LocalStorage-оос ачаалах --------
+  function loadStudents() {
+    try {
+      if (typeof localStorage === "undefined")
+        return JSON.parse(JSON.stringify(defaultStudents));
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return JSON.parse(JSON.stringify(defaultStudents));
+      return JSON.parse(saved);
+    } catch (e) {
+      return JSON.parse(JSON.stringify(defaultStudents));
+    }
+  }
+
+  function saveStudents() {
+    try {
+      if (typeof localStorage === "undefined") return;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+    } catch (e) {
+      console.warn("localStorage хадгалалт амжилтгүй:", e);
+    }
+  }
+
+  let students = loadStudents();
+
+  // -------- DOM элементүүд --------
   const studentsGrid = document.getElementById("studentsGrid");
   const totalStudentsLabel = document.getElementById("totalStudentsLabel");
+  const searchInput = document.getElementById("searchInput");
 
   const detailsPlaceholder = document.getElementById("detailsPlaceholder");
   const studentDetails = document.getElementById("studentDetails");
@@ -512,16 +633,18 @@
   const gradesTableWrapper = document.getElementById("gradesTableWrapper");
   const examsTableWrapper = document.getElementById("examsTableWrapper");
   const logoutBtn = document.getElementById("logoutBtn");
+
   const adminBtn = document.getElementById("adminBtn");
   const adminBanner = document.getElementById("adminBanner");
   const saveRow = document.getElementById("saveRow");
   const saveBtn = document.getElementById("saveBtn");
   const btnPrint = document.getElementById("btnPrint");
 
-  function normalizeCode(s) {
-    return (s || "").toString().trim().toUpperCase().replace(/\s|-/g, "");
-  }
+  let isAdmin = false;
+  let currentStudent = null;
+  let currentYearKey = null;
 
+  // -------- Туслах функцууд --------
   function computeRowAverage(g) {
     const vals = [];
     const t1 = parseFloat(g.term1);
@@ -531,13 +654,15 @@
     if (!isNaN(t2)) vals.push(t2);
     if (!isNaN(tf)) vals.push(tf);
     if (!vals.length) return 0;
-    return Math.round(vals.reduce((a, b) => a + b, 0) / vals.length);
+    const sum = vals.reduce((a, b) => a + b, 0);
+    return Math.round(sum / vals.length);
   }
 
   function computeOverallAverage(yearData) {
     if (!yearData.grades || !yearData.grades.length) return 0;
     const rowAverages = yearData.grades.map(computeRowAverage);
-    return Math.round(rowAverages.reduce((a, b) => a + b, 0) / rowAverages.length);
+    const sum = rowAverages.reduce((a, b) => a + b, 0);
+    return Math.round(sum / rowAverages.length);
   }
 
   function computeAttendancePercent(att) {
@@ -547,38 +672,48 @@
     return Math.round((att.present / total) * 100);
   }
 
+  function normalizeReg(s) {
+    return (s || "")
+      .toString()
+      .trim()
+      .toUpperCase()
+      .replace(/\s|-/g, "");
+  }
+
   function updateAdminUI() {
     if (isAdmin) {
       adminBanner.style.display = "block";
       adminBtn.textContent = "Админ гарах";
-      if (currentStudent && currentYearKey) saveRow.style.display = "flex";
+      saveRow.style.display = currentStudent && currentYearKey ? "flex" : "none";
     } else {
       adminBanner.style.display = "none";
       adminBtn.textContent = "Админ нэвтрэх";
       saveRow.style.display = "none";
     }
-    if (currentStudent && currentYearKey) renderYearDetails();
+    if (currentStudent && currentYearKey) {
+      renderYearDetails();
+    }
   }
 
+  // -------- Сурагчдын жагсаалт --------
   function renderStudentsList() {
     studentsGrid.innerHTML = "";
+
     const searchVal = (searchInput.value || "").toLowerCase().trim();
-    const gradeVal = gradeFilter.value;
-
     let filtered = students;
-    if (gradeVal !== "all") {
-      filtered = filtered.filter(s => Object.keys(s.years || {}).includes(gradeVal));
-    }
     if (searchVal) {
-      filtered = filtered.filter(s => (s.name || "").toLowerCase().includes(searchVal));
+      filtered = students.filter(s =>
+        (s.name || "").toLowerCase().includes(searchVal)
+      );
+      totalStudentsLabel.textContent =
+        "Нийт сурагч: " + filtered.length + " / " + students.length;
+    } else {
+      totalStudentsLabel.textContent = "Нийт сурагч: " + students.length;
     }
-
-    totalStudentsLabel.textContent =
-      "Нийт сурагч: " + filtered.length + " / " + students.length;
 
     if (!filtered.length) {
       studentsGrid.innerHTML =
-        "<div class='empty-message' style='grid-column:1/-1;'>Хайлтад тохирсон сурагч алга.</div>";
+        "<div class='empty-message' style='grid-column:1/-1;'>Хайлтад тохирох сурагч алга.</div>";
       return;
     }
 
@@ -611,21 +746,23 @@
 
       card.addEventListener("click", () => {
         const input = window.prompt(
-          student.name + " сурагчийн PIN кодыг оруулна уу:"
+          student.name + " сурагчийн регистрийн дугаарыг оруулна уу:"
         );
         if (!input) return;
 
-        const inputNorm = normalizeCode(input);
-        const realNorm = normalizeCode(student.regNo);
+        const inputNorm = normalizeReg(input);
+        const realNorm = normalizeReg(student.regNo);
 
         if (!inputNorm) {
-          alert("Кодоо хоосон оруулж болохгүй.");
+          alert("Регистрээ хоосон оруулж болохгүй.");
           return;
         }
+
         if (realNorm && inputNorm !== realNorm) {
-          alert("Код буруу байна. Дахин шалгана уу.");
+          alert("Регистр буруу байна. Дахин шалгаад оруулна уу.");
           return;
         }
+
         openStudent(student);
       });
 
@@ -633,11 +770,13 @@
     });
   }
 
+  // -------- Сурагч нээх --------
   function openStudent(student) {
     currentStudent = student;
+
     const yearKeys = Object.keys(student.years || {}).sort((a, b) => Number(a) - Number(b));
     if (!yearKeys.length) {
-      alert("Энэ сурагчид жилээр дүн оруулаагүй байна.");
+      alert("Энэ сурагчид жиллийн дүн оруулаагүй байна.");
       return;
     }
     currentYearKey = yearKeys[yearKeys.length - 1];
@@ -671,17 +810,18 @@
     renderYearDetails();
   }
 
+  // -------- Тухайн жилийн дэлгэрэнгүй --------
   function renderYearDetails() {
     if (!currentStudent || !currentYearKey) return;
     const yearData = currentStudent.years[currentYearKey];
     if (!yearData) return;
 
     const genderText = currentStudent.gender === "эм" ? "Эмэгтэй" : "Эрэгтэй";
-    detailsMeta.textContent =
-      (yearData.gradeLabel || (currentYearKey + "Е анги")) + " • " + genderText;
+    detailsMeta.textContent = (yearData.gradeLabel || (currentYearKey + "Е анги")) + " • " + genderText;
 
     const avg = computeOverallAverage(yearData);
     const att = computeAttendancePercent(yearData.attendance || {});
+
     let examCount = 0;
     const examMap = {};
     if (yearData.exams) {
@@ -707,7 +847,8 @@
 
     let html =
       "<table><thead><tr>" +
-      "<th>№</th><th>Хичээл</th><th>1-р улирал</th><th>2-р улирал</th><th>Жилийн эцэс</th><th>Жилийн голч</th>" +
+      "<th>№</th><th>Хичээл</th>" +
+      "<th>1-р улирал</th><th>2-р улирал</th><th>Жилийн эцэс</th><th>Жилийн голч</th>" +
       "</tr></thead><tbody>";
 
     SUBJECTS_18.forEach((subj, index) => {
@@ -716,9 +857,7 @@
       const t2 = g.term2 ?? "";
       const tf = g.final ?? "";
       const rowAvg =
-        (t1 !== "" || t2 !== "" || tf !== "")
-          ? computeRowAverage({ term1: t1, term2: t2, final: tf })
-          : "";
+        (t1 !== "" || t2 !== "" || tf !== "") ? computeRowAverage({ term1: t1, term2: t2, final: tf }) : "";
 
       const idx = index;
 
@@ -776,6 +915,41 @@
     }
   }
 
+  // -------- Формаас утгыг хадгалах (админ) --------
+  function saveCurrentYearFromForm() {
+    if (!currentStudent || !currentYearKey) return;
+    const yearData = currentStudent.years[currentYearKey];
+
+    const newGrades = SUBJECTS_18.map((subj, index) => {
+      const t1 = document.getElementById("g-" + index + "-t1");
+      const t2 = document.getElementById("g-" + index + "-t2");
+      const tf = document.getElementById("g-" + index + "-tf");
+      return {
+        subject: subj,
+        term1: t1 ? t1.value.trim() : "",
+        term2: t2 ? t2.value.trim() : "",
+        final: tf ? tf.value.trim() : ""
+      };
+    });
+
+    yearData.grades = newGrades;
+
+    const newExams = EXAM_SUBJECTS.map((subj, i) => {
+      const inp = document.getElementById("ex-" + i);
+      return {
+        name: subj,
+        score: inp ? inp.value.trim() : ""
+      };
+    });
+    yearData.exams = newExams;
+
+    saveStudents();
+    alert("Өөрчлөлтийг хадгаллаа (энэ төхөөрөмж дээр).");
+
+    renderYearDetails();
+  }
+
+  // -------- Гарах товч --------
   function handleLogout() {
     currentStudent = null;
     currentYearKey = null;
@@ -794,6 +968,7 @@
     btnPrint.style.display = "none";
   }
 
+  // -------- Админ нэвтрэх / гарах --------
   function handleAdminClick() {
     if (!isAdmin) {
       const pw = window.prompt("Админ нууц үг оруулна уу:");
@@ -801,118 +976,42 @@
       if (pw === ADMIN_PASSWORD) {
         isAdmin = true;
         alert("Админ горим идэвхжлээ.");
+        updateAdminUI();
       } else {
         alert("Нууц үг буруу байна.");
       }
     } else {
       isAdmin = false;
+      updateAdminUI();
     }
-    updateAdminUI();
   }
 
-  btnPrint.addEventListener("click", () => window.print());
-  logoutBtn.addEventListener("click", handleLogout);
-  adminBtn.addEventListener("click", handleAdminClick);
+  // -------- Event listener-үүд --------
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+  if (adminBtn) {
+    adminBtn.addEventListener("click", handleAdminClick);
+  }
+  if (saveBtn) {
+    saveBtn.addEventListener("click", saveCurrentYearFromForm);
+  }
   yearSelect.addEventListener("change", () => {
     currentYearKey = yearSelect.value;
     renderYearDetails();
   });
+
+  // хайлтын event
   searchInput.addEventListener("input", renderStudentsList);
-  gradeFilter.addEventListener("change", renderStudentsList);
-</script>
 
-<!-- ========== FIREBASE + FIRESTORE INTEGRATION (CDN) ========== -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  // 🔥 ЭНД ӨӨРИЙН Firebase CONFIG-ээ TAVINA 🔥
-  const firebaseConfig = {
-    apiKey: "ТАНЫ_API_KEY",
-    authDomain: "ТАНЫ_PROJECT_ID.firebaseapp.com",
-    projectId: "ТАНЫ_PROJECT_ID",
-    storageBucket: "ТАНЫ_PROJECT_ID.appspot.com",
-    messagingSenderId: "ТАНЫ_SENDER_ID",
-    appId: "ТАНЫ_APP_ID"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // students[] хувьсагчийг дээрх script-аас ашиглаж байна
-  async function loadStudentsFromFirestore() {
-    try {
-      const ref = doc(db, "config", "eclass");
-      const snap = await getDoc(ref);
-
-      if (snap.exists()) {
-        const data = snap.data();
-        if (data.studentsJson) {
-          students = JSON.parse(data.studentsJson);
-          console.log("Firestore-оос students ачааллаа:", students.length);
-        } else {
-          console.warn("studentsJson талбар алга, default ашиглана");
-          students = JSON.parse(JSON.stringify(defaultStudents));
-        }
-      } else {
-        console.warn("config/eclass олдсонгүй, default ашиглана");
-        students = JSON.parse(JSON.stringify(defaultStudents));
-      }
-    } catch (err) {
-      console.error("Firestore ачаалах алдаа:", err);
-      students = JSON.parse(JSON.stringify(defaultStudents));
-    }
-    renderStudentsList();
-  }
-
-  async function saveStudentsToFirestore() {
-    try {
-      const ref = doc(db, "config", "eclass");
-      await setDoc(ref, {
-        studentsJson: JSON.stringify(students)
-      });
-      alert("Өөрчлөлтийг Firestore-д хадгаллаа.");
-    } catch (err) {
-      console.error("Firestore хадгалах алдаа:", err);
-      alert("Хадгалах үед алдаа гарлаа. Сүлжээ эсвэл rules-ээ шалгана уу.");
-    }
-  }
-
-  // saveBtn-г дээрх глобал script-аас ашиглана
-  document.getElementById("saveBtn").addEventListener("click", () => {
-    if (!window.currentStudent || !window.currentYearKey) {
-      alert("Сурагч болон жилээ сонгоогүй байна.");
-      return;
-    }
-    // одоогийн жил дэх input-уудыг уншиж students-д буцааж бичнэ
-    const yearData = currentStudent.years[currentYearKey];
-
-    const newGrades = SUBJECTS_18.map((subj, idx) => {
-      const t1 = document.getElementById("g-" + idx + "-t1");
-      const t2 = document.getElementById("g-" + idx + "-t2");
-      const tf = document.getElementById("g-" + idx + "-tf");
-      return {
-        subject: subj,
-        term1: t1 ? t1.value.trim() : "",
-        term2: t2 ? t2.value.trim() : "",
-        final: tf ? tf.value.trim() : ""
-      };
-    });
-    yearData.grades = newGrades;
-
-    const newExams = EXAM_SUBJECTS.map((subj, i) => {
-      const inp = document.getElementById("ex-" + i);
-      return { name: subj, score: inp ? inp.value.trim() : "" };
-    });
-    yearData.exams = newExams;
-
-    // Firestore руу хадгална
-    saveStudentsToFirestore();
+  // хэвлэх товч
+  btnPrint.addEventListener("click", () => {
+    window.print();
   });
 
-  // Хуудас ачаалахад Firestore-оос өгөгдөл татна
-  loadStudentsFromFirestore();
+  // анхны ачаалал
+  renderStudentsList();
+  updateAdminUI();
 </script>
-
 </body>
 </html>
