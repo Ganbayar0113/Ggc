@@ -1000,5 +1000,50 @@
   renderStudentsList();
   updateAdminUI();
 </script>
+  <script type="module">
+  // Firebase SDK–г CDN-ээр импортолж байна
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { 
+    getFirestore, doc, getDoc 
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // ЭНД firebaseConfig-оо тавина
+  const firebaseConfig = {
+    apiKey: "ТАНЫ_API_KEY",
+    authDomain: "ТАНЫ_PROJECT.firebaseapp.com",
+    projectId: "ТАНЫ_PROJECT_ID",
+    storageBucket: "ТАНЫ_PROJECT.appspot.com",
+    messagingSenderId: "....",
+    appId: "...."
+  };
+
+  // Firebase-г асаана
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Firestore-оос config/eclass document-г унших тест функц
+  async function testFirestore() {
+    try {
+      const ref = doc(db, "config", "eclass");
+      const snap = await getDoc(ref);
+
+      if (snap.exists()) {
+        const data = snap.data();
+        console.log("Firestore data:", data);
+        alert("Firestore-оос өгөгдөл амжилттай уншлаа: " + JSON.stringify(data));
+      } else {
+        alert("config/eclass документ олдсонгүй!");
+      }
+    } catch (err) {
+      console.error("Firestore алдаа:", err);
+      alert("Firestore-той холбогдоход алдаа гарлаа. Console-oo шалгаарай.");
+    }
+  }
+
+  // Хуудас ачаалахад шууд тестлэнэ
+  testFirestore();
+</script>
+
 </body>
 </html>
+
