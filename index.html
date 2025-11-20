@@ -1043,9 +1043,52 @@
   // Хуудас ачаалахад шууд тестлэнэ
   testFirestore();
 </script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
 </body>
 </html>
+<!-- Firebase Firestore CDN Integration -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc,
+    collection,
+    getDocs
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // Таны Firebase Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyOygKFSUqE2BWRk6AhJcXuMPa_AbNKJ0",
+    authDomain: "gungaluutai-f24b3.firebaseapp.com",
+    projectId: "gungaluutai-f24b3",
+    storageBucket: "gungaluutai-f24b3.appspot.com",
+    messagingSenderId: "483739934026",
+    appId: "1:483739934026:web:56f1bcc39a8d4bface35b3"
+  };
+
+  // Firebase асаана
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Firestore тест — config/eclass document-ыг уншаад console-д хэвлэнэ
+  async function testFirestore() {
+    try {
+      const ref = doc(db, "config", "eclass");
+      const snap = await getDoc(ref);
+
+      if (snap.exists()) {
+        console.log("Firestore OK:", snap.data());
+      } else {
+        console.error("Firestore document байхгүй байна!!!");
+      }
+    } catch (err) {
+      console.error("Firestore ERROR:", err);
+      alert("Firestore холбогдож чадсангүй! Та security rules болон domain зөв эсэхийг шалгана уу.");
+    }
+  }
+
+  testFirestore();
+</script>
+
+
