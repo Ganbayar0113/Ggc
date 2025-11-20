@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <title>2025 оны дүнгийн систем</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: #ffffffcc;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-text-title {
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    main {
+      padding: 16px 0 32px;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 20px;
+    }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .muted {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .students-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      max-height: 420px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+    .student-card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s, background 0.15s;
+    }
+    .student-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+    .student-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      margin: 0 auto 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .student-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .student-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .student-class {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .details-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .details-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .details-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .details-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .details-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .stat-box {
+      flex: 1 1 80px;
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: #eff6ff;
+      font-size: 12px;
+    }
+    .stat-box strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    .tab-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 12px 0 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: none; }
+    .empty-message {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 12px 0;
+    }
+    .details-placeholder {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 10px 0 4px;
+    }
+    /* Гарах товч */
+    .logout-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      margin-bottom: 6px;
+      gap: 8px;
+    }
+    .logout-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .logout-btn:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+    /* Админ товч (header дээр) */
+    .admin-header-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .admin-btn {
+      padding: 5px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      cursor: pointer;
+    }
+    .admin-btn:hover {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+    /* Админ баннер (баруун карт дотор) */
+    .admin-banner {
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: #fef3c7;
+      border: 1px solid #facc15;
+      font-size: 11px;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+    /* Жил сонгох select */
+    .year-select-row {
+      margin-bottom: 8px;
+    }
+    .year-select-row label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-right: 6px;
+    }
+    .year-select-row select {
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f9fafb;
+    }
+    /* Админ засварын товч */
+    .save-row {
+      margin-top: 8px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      align-items: center;
+    }
+    .save-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid var(--primary-dark);
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+    }
+    .save-btn:hover {
+      background: var(--primary-dark);
+    }
+    .info-small {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    input.grade-input {
+      width: 60px;
+      padding: 2px 4px;
+      font-size: 11px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      text-align: right;
+    }
+    input.grade-input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    /* PRINT хэвлэх үед */
+    @media print {
+      header,
+      .layout > section:first-child,
+      #btnPrint {
+        display: none !important;
+      }
+      body {
+        background: #ffffff;
+      }
+      .card {
+        box-shadow: none;
+        border: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-badge">IT</div>
+      <div>
+        <div class="logo-text-title">2025 оны дүнгийн систем</div>
+        <div class="logo-text-sub">Гүн галуутай сургууль • 6Е–12Е анги</div>
+      </div>
+    </div>
+    <div class="admin-header-box">
+      <span>Гүн галуутай Е бүлгийн дүнгийн веб</span>
+      <button id="adminBtn" class="admin-btn">Админ нэвтрэх</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container layout">
+    <!-- Зүүн тал -->
+    <section class="card">
+      <h2>Сурагч сонгох</h2>
+      <p class="muted">6–12-р ангийн Е бүлгийн сурагчдын жагсаалт.</p>
+
+      <div class="muted" id="totalStudentsLabel" style="margin-bottom:6px;">
+        Нийт сурагч: 0
+      </div>
+
+      <!-- Нэрээр хайх input -->
+      <div style="margin-bottom:8px;">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Хүүхдийн нэрээр хайх…"
+          style="
+            width:100%;
+            padding:7px 12px;
+            border-radius:999px;
+            border:1px solid #d1d5db;
+            font-size:13px;
+            outline:none;
+          "
+        />
+      </div>
+
+      <div class="muted" style="margin-bottom:6px;">
+        Хүүхдийн зураг дээр дарж, регистрийн дугаараар нэвтэрч дүнг үзнэ.
+      </div>
+      <div id="studentsGrid" class="students-grid"></div>
+    </section>
+
+    <!-- Баруун тал -->
+    <section class="card">
+      <h2>Хүүхдийн дүн, ирц</h2>
+      <p class="muted">Регистрээр нэвтэрсний дараа тухайн жилийн ангиа сонгон дүнгээ харна.</p>
+
+      <!-- Дүн хэвлэх товч -->
+      <button
+        id="btnPrint"
+        style="
+          display:none;
+          margin-bottom:10px;
+          padding:7px 14px;
+          border-radius:999px;
+          background:#2563eb;
+          color:white;
+          font-size:13px;
+          border:none;
+          cursor:pointer;
+        "
+      >
+        📄 Дүн хэвлэх / PDF болгох
+      </button>
+
+      <!-- Админ горимын баннер -->
+      <div id="adminBanner" class="admin-banner" style="display:none;">
+        Админ горим идэвхтэй байна. Доорх хүснэгтүүд дээр шууд дүн, шалгалтын оноог засварлаж “Хадгалах” товч дарж хадгална.
+      </div>
+
+      <div id="detailsPlaceholder" class="details-placeholder">
+        Хүүхэд сонгогдоогүй байна. Зүүн талаас сурагчийн зураг дээр дарна уу.
+      </div>
+
+      <div id="studentDetails" style="display:none;">
+        <div class="details-header">
+          <div class="details-photo" id="detailsPhoto"></div>
+          <div>
+            <div class="details-name" id="detailsName"></div>
+            <div class="details-meta" id="detailsMeta"></div>
+          </div>
+        </div>
+
+        <!-- Жил сонгох -->
+        <div class="year-select-row">
+          <label for="yearSelect">Жил / анги:</label>
+          <select id="yearSelect"></select>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-box">
+            <strong id="statAverage">0</strong>
+            Голч дүн
+          </div>
+          <div class="stat-box">
+            <strong id="statAttendance">0%</strong>
+            Ирц
+          </div>
+          <div class="stat-box">
+            <strong id="statExams">0</strong>
+            Шалгалтын тоо
+          </div>
+        </div>
+
+        <!-- Гарах + хадгалах -->
+        <div class="logout-row">
+          <div class="muted">
+            Эцэг эх / сурагч зөвхөн уншина. Дүнгийн засварлалтыг зөвхөн админ горимоор хийнэ.
+          </div>
+          <button id="logoutBtn" class="logout-btn">Гарах</button>
+        </div>
+
+        <div class="save-row" id="saveRow" style="display:none;">
+          <span class="info-small">Админ горимд: хүснэгт дээрх утгуудыг засварлаад “Хадгалах” товч дарна.</span>
+          <button id="saveBtn" class="save-btn">Өөрчлөлтийг хадгалах</button>
+        </div>
+
+        <div class="tab-title">18 хичээлийн дүн (1-р улирал, 2-р улирал, жилийн эцэс)</div>
+        <div id="gradesTableWrapper"></div>
+
+        <div class="tab-title">Шалгалтын оноо</div>
+        <div id="examsTableWrapper"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+  // -------- Тогтмолууд --------
+  const SUBJECTS_18 = [
+    "Монгол хэл",
+    "Математик",
+    "Англи хэл",
+    "Биологи",
+    "Физик",
+    "Хими",
+    "Газар зүй",
+    "Түүх",
+    "Иргэний боловсрол",
+    "Мэдээллийн технологи",
+    "Дизайн технологи",
+    "Биеийн тамир",
+    "Дүрслэх урлаг",
+    "Хөгжим",
+    "Сонгон судлах",
+    "Үндэсний бичиг",
+    "Уран зохиол",
+    "Байгалийн ухаан"
+  ];
+
+  const EXAM_SUBJECTS = [
+    "Монгол хэл",
+    "Математик",
+    "Нэгдмэл агуулга"
+  ];
+
+  const ADMIN_PASSWORD = "it1234"; // хүсвэл өөрөө солиорой
+  const STORAGE_KEY = "gg_2025_eclass_v1";
+
+  // -------- Анхны өгөгдөл (default) --------
+  const defaultStudents = [
+    {
+      id: "s01",
+      name: "Тэмүүлэн",
+      regNo: "ВВ11112222",
+      photo: "https://via.placeholder.com/150x150?text=E+01",
+      gender: "эр",
+      years: {
+        "6": {
+          gradeLabel: "6Е анги",
+          attendance: { present: 110, absent: 5, late: 2 },
+          grades: SUBJECTS_18.map((subj, i) => ({
+            subject: subj,
+            term1: 80 + (i % 5) * 2,
+            term2: 81 + (i % 5) * 2,
+            final: 82 + (i % 5) * 2
+          })),
+          exams: [
+            { name: "Монгол хэл",      score: 780 },
+            { name: "Математик",       score: 800 },
+            { name: "Нэгдмэл агуулга", score: 790 }
+          ]
+        },
+        "7": {
+          gradeLabel: "7Е анги",
+          attendance: { present: 115, absent: 3, late: 1 },
+          grades: SUBJECTS_18.map((subj, i) => ({
+            subject: subj,
+            term1: 82 + (i % 5) * 2,
+            term2: 83 + (i % 5) * 2,
+            final: 84 + (i % 5) * 2
+          })),
+          exams: [
+            { name: "Монгол хэл",      score: 790 },
+            { name: "Математик",       score: 810 },
+            { name: "Нэгдмэл агуулга", score: 800 }
+          ]
+        }
+      }
+    },
+    {
+      id: "s02",
+      name: "Бат-Эрдэнэ",
+      regNo: "АА12345678",
+      photo: "https://via.placeholder.com/150x150?text=E+02",
+      gender: "эр",
+      years: {
+        "6": {
+          gradeLabel: "6Е анги",
+          attendance: { present: 108, absent: 4, late: 3 },
+          grades: SUBJECTS_18.map((subj, i) => ({
+            subject: subj,
+            term1: 75 + (i % 5) * 2,
+            term2: 76 + (i % 5) * 2,
+            final: 77 + (i % 5) * 2
+          })),
+          exams: [
+            { name: "Монгол хэл",      score: 720 },
+            { name: "Математик",       score: 750 },
+            { name: "Нэгдмэл агуулга", score: 730 }
+          ]
+        }
+      }
+    }
+    // Эндээс цааш 41 хүртэл сурагчаа нэм.
+  ];
+
+  // -------- LocalStorage-оос ачаалах --------
+  function loadStudents() {
+    try {
+      if (typeof localStorage === "undefined") return JSON.parse(JSON.stringify(defaultStudents));
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return JSON.parse(JSON.stringify(defaultStudents));
+      return JSON.parse(saved);
+    } catch (e) {
+      return JSON.parse(JSON.stringify(defaultStudents));
+    }
+  }
+
+  function saveStudents() {
+    try {
+      if (typeof localStorage === "undefined") return;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+    } catch (e) {
+      console.warn("localStorage хадгалалт амжилтгүй:", e);
+    }
+  }
+
+  let students = loadStudents();
+
+  // -------- DOM элементүүд --------
+  const studentsGrid = document.getElementById("studentsGrid");
+  const totalStudentsLabel = document.getElementById("totalStudentsLabel");
+  const searchInput = document.getElementById("searchInput");
+
+  const detailsPlaceholder = document.getElementById("detailsPlaceholder");
+  const studentDetails = document.getElementById("studentDetails");
+  const detailsPhoto = document.getElementById("detailsPhoto");
+  const detailsName = document.getElementById("detailsName");
+  const detailsMeta = document.getElementById("detailsMeta");
+  const yearSelect = document.getElementById("yearSelect");
+  const statAverage = document.getElementById("statAverage");
+  const statAttendance = document.getElementById("statAttendance");
+  const statExams = document.getElementById("statExams");
+  const gradesTableWrapper = document.getElementById("gradesTableWrapper");
+  const examsTableWrapper = document.getElementById("examsTableWrapper");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  const adminBtn = document.getElementById("adminBtn");
+  const adminBanner = document.getElementById("adminBanner");
+  const saveRow = document.getElementById("saveRow");
+  const saveBtn = document.getElementById("saveBtn");
+  const btnPrint = document.getElementById("btnPrint");
+
+  let isAdmin = false;
+  let currentStudent = null;
+  let currentYearKey = null;
+
+  // -------- Туслах функцууд --------
+  function computeRowAverage(g) {
+    const vals = [];
+    const t1 = parseFloat(g.term1);
+    const t2 = parseFloat(g.term2);
+    const tf = parseFloat(g.final);
+    if (!isNaN(t1)) vals.push(t1);
+    if (!isNaN(t2)) vals.push(t2);
+    if (!isNaN(tf)) vals.push(tf);
+    if (!vals.length) return 0;
+    const sum = vals.reduce((a, b) => a + b, 0);
+    return Math.round(sum / vals.length);
+  }
+
+  function computeOverallAverage(yearData) {
+    if (!yearData.grades || !yearData.grades.length) return 0;
+    const rowAverages = yearData.grades.map(computeRowAverage);
+    const sum = rowAverages.reduce((a, b) => a + b, 0);
+    return Math.round(sum / rowAverages.length);
+  }
+
+  function computeAttendancePercent(att) {
+    if (!att) return 0;
+    const total = (att.present || 0) + (att.absent || 0) + (att.late || 0);
+    if (!total) return 0;
+    return Math.round((att.present / total) * 100);
+  }
+
+  function normalizeReg(s) {
+    return (s || "")
+      .toString()
+      .trim()
+      .toUpperCase()
+      .replace(/\s|-/g, "");
+  }
+
+  function updateAdminUI() {
+    if (isAdmin) {
+      adminBanner.style.display = "block";
+      adminBtn.textContent = "Админ гарах";
+      saveRow.style.display = currentStudent && currentYearKey ? "flex" : "none";
+    } else {
+      adminBanner.style.display = "none";
+      adminBtn.textContent = "Админ нэвтрэх";
+      saveRow.style.display = "none";
+    }
+    if (currentStudent && currentYearKey) {
+      renderYearDetails();
+    }
+  }
+
+  // -------- Сурагчдын жагсаалт --------
+  function renderStudentsList() {
+    studentsGrid.innerHTML = "";
+
+    const searchVal = (searchInput.value || "").toLowerCase().trim();
+    let filtered = students;
+    if (searchVal) {
+      filtered = students.filter(s =>
+        (s.name || "").toLowerCase().includes(searchVal)
+      );
+      totalStudentsLabel.textContent =
+        "Нийт сурагч: " + filtered.length + " / " + students.length;
+    } else {
+      totalStudentsLabel.textContent = "Нийт сурагч: " + students.length;
+    }
+
+    if (!filtered.length) {
+      studentsGrid.innerHTML =
+        "<div class='empty-message' style='grid-column:1/-1;'>Хайлтад тохирох сурагч алга.</div>";
+      return;
+    }
+
+    filtered.forEach(student => {
+      const card = document.createElement("div");
+      card.className = "student-card";
+
+      const photoDiv = document.createElement("div");
+      photoDiv.className = "student-photo";
+      if (student.photo) {
+        const img = document.createElement("img");
+        img.src = student.photo;
+        img.alt = student.name;
+        photoDiv.appendChild(img);
+      } else {
+        photoDiv.textContent = "No photo";
+      }
+
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "student-name";
+      nameDiv.textContent = student.name;
+
+      const classDiv = document.createElement("div");
+      classDiv.className = "student-class";
+      classDiv.textContent = "Е бүлэг";
+
+      card.appendChild(photoDiv);
+      card.appendChild(nameDiv);
+      card.appendChild(classDiv);
+
+      card.addEventListener("click", () => {
+        const input = window.prompt(
+          student.name + " сурагчийн регистрийн дугаарыг оруулна уу:"
+        );
+        if (!input) return;
+
+        const inputNorm = normalizeReg(input);
+        const realNorm = normalizeReg(student.regNo);
+
+        if (!inputNorm) {
+          alert("Регистрээ хоосон оруулж болохгүй.");
+          return;
+        }
+
+        if (realNorm && inputNorm !== realNorm) {
+          alert("Регистр буруу байна. Дахин шалгаад оруулна уу.");
+          return;
+        }
+
+        openStudent(student);
+      });
+
+      studentsGrid.appendChild(card);
+    });
+  }
+
+  // -------- Сурагч нээх --------
+  function openStudent(student) {
+    currentStudent = student;
+
+    const yearKeys = Object.keys(student.years || {}).sort((a, b) => Number(a) - Number(b));
+    if (!yearKeys.length) {
+      alert("Энэ сурагчид жиллийн дүн оруулаагүй байна.");
+      return;
+    }
+    currentYearKey = yearKeys[yearKeys.length - 1];
+
+    yearSelect.innerHTML = "";
+    yearKeys.forEach(y => {
+      const opt = document.createElement("option");
+      opt.value = y;
+      opt.textContent = y + "-р анги";
+      if (y === currentYearKey) opt.selected = true;
+      yearSelect.appendChild(opt);
+    });
+
+    detailsPlaceholder.style.display = "none";
+    studentDetails.style.display = "block";
+
+    detailsPhoto.innerHTML = "";
+    if (student.photo) {
+      const img = document.createElement("img");
+      img.src = student.photo;
+      img.alt = student.name;
+      detailsPhoto.appendChild(img);
+    } else {
+      detailsPhoto.textContent = "No photo";
+    }
+
+    detailsName.textContent = student.name;
+    saveRow.style.display = isAdmin ? "flex" : "none";
+    btnPrint.style.display = "inline-block";
+
+    renderYearDetails();
+  }
+
+  // -------- Тухайн жилийн дэлгэрэнгүй --------
+  function renderYearDetails() {
+    if (!currentStudent || !currentYearKey) return;
+    const yearData = currentStudent.years[currentYearKey];
+    if (!yearData) return;
+
+    const genderText = currentStudent.gender === "эм" ? "Эмэгтэй" : "Эрэгтэй";
+    detailsMeta.textContent = (yearData.gradeLabel || (currentYearKey + "Е анги")) + " • " + genderText;
+
+    const avg = computeOverallAverage(yearData);
+    const att = computeAttendancePercent(yearData.attendance || {});
+
+    let examCount = 0;
+    const examMap = {};
+    if (yearData.exams) {
+      yearData.exams.forEach(ex => {
+        examMap[ex.name] = ex.score;
+      });
+      EXAM_SUBJECTS.forEach(subj => {
+        const val = examMap[subj];
+        if (val !== undefined && val !== null && val !== "") examCount++;
+      });
+    }
+
+    statAverage.textContent = avg;
+    statAttendance.textContent = att + "%";
+    statExams.textContent = examCount;
+
+    const gradesMap = {};
+    if (yearData.grades) {
+      yearData.grades.forEach(g => {
+        gradesMap[g.subject] = g;
+      });
+    }
+
+    let html =
+      "<table><thead><tr>" +
+      "<th>№</th><th>Хичээл</th>" +
+      "<th>1-р улирал</th><th>2-р улирал</th><th>Жилийн эцэс</th><th>Жилийн голч</th>" +
+      "</tr></thead><tbody>";
+
+    SUBJECTS_18.forEach((subj, index) => {
+      const g = gradesMap[subj] || {};
+      const t1 = g.term1 ?? "";
+      const t2 = g.term2 ?? "";
+      const tf = g.final ?? "";
+      const rowAvg =
+        (t1 !== "" || t2 !== "" || tf !== "") ? computeRowAverage({ term1: t1, term2: t2, final: tf }) : "";
+
+      const idx = index;
+
+      if (isAdmin) {
+        html +=
+          "<tr>" +
+          "<td>" + (index + 1) + "</td>" +
+          "<td>" + subj + "</td>" +
+          "<td><input class='grade-input' id='g-" + idx + "-t1' value='" + t1 + "'></td>" +
+          "<td><input class='grade-input' id='g-" + idx + "-t2' value='" + t2 + "'></td>" +
+          "<td><input class='grade-input' id='g-" + idx + "-tf' value='" + tf + "'></td>" +
+          "<td>" + (rowAvg === "" ? "" : rowAvg) + "</td>" +
+          "</tr>";
+      } else {
+        html +=
+          "<tr>" +
+          "<td>" + (index + 1) + "</td>" +
+          "<td>" + subj + "</td>" +
+          "<td>" + t1 + "</td>" +
+          "<td>" + t2 + "</td>" +
+          "<td>" + tf + "</td>" +
+          "<td>" + rowAvg + "</td>" +
+          "</tr>";
+      }
+    });
+
+    html += "</tbody></table>";
+    gradesTableWrapper.innerHTML = html;
+
+    if (isAdmin) {
+      let exHtml =
+        "<table><thead><tr><th>Хичээл</th><th>Оноо</th></tr></thead><tbody>";
+      EXAM_SUBJECTS.forEach((subj, i) => {
+        const val = examMap[subj] ?? "";
+        exHtml +=
+          "<tr><td>" + subj + "</td>" +
+          "<td><input class='grade-input' id='ex-" + i + "' value='" + val + "'></td></tr>";
+      });
+      exHtml += "</tbody></table>";
+      examsTableWrapper.innerHTML = exHtml;
+    } else {
+      if (yearData.exams && yearData.exams.length) {
+        let exHtml =
+          "<table><thead><tr><th>Хичээл</th><th>Оноо</th></tr></thead><tbody>";
+        EXAM_SUBJECTS.forEach(subj => {
+          const val = examMap[subj] ?? "";
+          exHtml += "<tr><td>" + subj + "</td><td>" + val + "</td></tr>";
+        });
+        exHtml += "</tbody></table>";
+        examsTableWrapper.innerHTML = exHtml;
+      } else {
+        examsTableWrapper.innerHTML =
+          "<div class='empty-message'>Шалгалтын мэдээлэл оруулаагүй байна.</div>";
+      }
+    }
+  }
+
+  // -------- Формаас утгыг хадгалах (админ) --------
+  function saveCurrentYearFromForm() {
+    if (!currentStudent || !currentYearKey) return;
+    const yearData = currentStudent.years[currentYearKey];
+
+    const newGrades = SUBJECTS_18.map((subj, index) => {
+      const t1 = document.getElementById("g-" + index + "-t1");
+      const t2 = document.getElementById("g-" + index + "-t2");
+      const tf = document.getElementById("g-" + index + "-tf");
+      return {
+        subject: subj,
+        term1: t1 ? t1.value.trim() : "",
+        term2: t2 ? t2.value.trim() : "",
+        final: tf ? tf.value.trim() : ""
+      };
+    });
+
+    yearData.grades = newGrades;
+
+    const newExams = EXAM_SUBJECTS.map((subj, i) => {
+      const inp = document.getElementById("ex-" + i);
+      return {
+        name: subj,
+        score: inp ? inp.value.trim() : ""
+      };
+    });
+    yearData.exams = newExams;
+
+    saveStudents();
+    alert("Өөрчлөлтийг хадгаллаа (энэ төхөөрөмж дээр).");
+
+    renderYearDetails();
+  }
+
+  // -------- Гарах товч --------
+  function handleLogout() {
+    currentStudent = null;
+    currentYearKey = null;
+    studentDetails.style.display = "none";
+    detailsPlaceholder.style.display = "block";
+    detailsPhoto.innerHTML = "";
+    detailsName.textContent = "";
+    detailsMeta.textContent = "";
+    yearSelect.innerHTML = "";
+    statAverage.textContent = "0";
+    statAttendance.textContent = "0%";
+    statExams.textContent = "0";
+    gradesTableWrapper.innerHTML = "";
+    examsTableWrapper.innerHTML = "";
+    saveRow.style.display = "none";
+    btnPrint.style.display = "none";
+  }
+
+  // -------- Админ нэвтрэх / гарах --------
+  function handleAdminClick() {
+    if (!isAdmin) {
+      const pw = window.prompt("Админ нууц үг оруулна уу:");
+      if (!pw) return;
+      if (pw === ADMIN_PASSWORD) {
+        isAdmin = true;
+        alert("Админ горим идэвхжлээ.");
+        updateAdminUI();
+      } else {
+        alert("Нууц үг буруу байна.");
+      }
+    } else {
+      isAdmin = false;
+      updateAdminUI();
+    }
+  }
+
+  // -------- Event listener-үүд --------
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+  if (adminBtn) {
+    adminBtn.addEventListener("click", handleAdminClick);
+  }
+  if (saveBtn) {
+    saveBtn.addEventListener("click", saveCurrentYearFromForm);
+  }
+  yearSelect.addEventListener("change", () => {
+    currentYearKey = yearSelect.value;
+    renderYearDetails();
+  });
+
+  // хайлтын event
+  searchInput.addEventListener("input", renderStudentsList);
+
+  // хэвлэх товч
+  btnPrint.addEventListener("click", () => {
+    window.print();
+  });
+
+  // анхны ачаалал
+  renderStudentsList();
+  updateAdminUI();
+</script>
+</body>
+</html>
